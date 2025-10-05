@@ -161,7 +161,7 @@ pd <- position_dodge(0.4)
 do_plot_13_17 <- function(plot_df) {
     plot_df |>
         mutate(term = as.factor(term)) %>%
-        ggplot(aes(lab, estimate, group = term, color = term, fill = term)) +
+        ggplot(aes(lab, estimate, group = term, color = term, fill = term, shape = term)) +
         geom_hline(yintercept = 0, linetype = "dotted") +
         geom_errorbar(
             aes(
@@ -183,7 +183,10 @@ do_plot_13_17 <- function(plot_df) {
             panel.grid.major = element_blank(),
             panel.grid.minor = element_blank(),
             text = element_text(size = 15),
-            legend.position = "bottom"
+            legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
         ) +
         coord_flip() +
         scale_color_grey(
@@ -194,7 +197,8 @@ do_plot_13_17 <- function(plot_df) {
             start = 0, end = 0.6,
             name = "Year effect estimated in"
         ) +
-        scale_shape_discrete(
+        scale_shape_manual(
+            values = c("2017" = 21, "2021" = 22),
             name = "Year effect estimated in"
         )
 }
@@ -328,7 +332,10 @@ plot_df |>
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
-        legend.position = "bottom"
+        legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     facet_wrap(~lab, ncol = 3) +
     # scale 1998, 2002, 2005, 2009, 2013, 2017, 2021
@@ -489,7 +496,10 @@ ggplot(mod_tidy_sa_full, aes(year, estimate)) +
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
         legend.position = "bottom",
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     xlab("Election") +
     ylab("Estimated effect of above-median\nbrown employment\n(effect measured in percentage points)") +
@@ -710,7 +720,10 @@ afd_plot |>
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
-        legend.position = "bottom"
+        legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     coord_flip() +
     scale_color_grey(
@@ -849,7 +862,10 @@ hdid_full %>%
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
         legend.position = "bottom",
-        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     facet_wrap(~lab) +
     labs(
@@ -1305,7 +1321,10 @@ plot_df |>
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
-        legend.position = "bottom"
+        legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     coord_flip() +
     scale_color_grey(
@@ -1428,7 +1447,10 @@ plot_df |>
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
-        legend.position = "bottom"
+        legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     coord_flip() +
     scale_color_grey(
@@ -1561,7 +1583,10 @@ plot_df |>
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
-        legend.position = "bottom"
+        legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     coord_flip() +
     scale_color_grey(
@@ -1707,7 +1732,10 @@ ggplot(coefs, aes(x = name, y = coef * 100, color = factor(period))) +
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
-        legend.position = "bottom"
+        legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     scale_color_grey(
         start = 0, end = 0.6,
@@ -1740,7 +1768,10 @@ mod_all %>%
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
-        legend.position = "bottom"
+        legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     scale_color_grey(
         start = 0, end = 0.6,

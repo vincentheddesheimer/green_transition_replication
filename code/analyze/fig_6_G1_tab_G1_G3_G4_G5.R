@@ -194,16 +194,21 @@ ggplot(
     ),
     width = 0.0
   ) +
-  geom_point(shape = 21, fill = "white") +
+  geom_point(size = 2) +
   xlab("Year") +
   ylab("Change in party support rel. to 2015 (p.p.)") +
   theme_custom() +
   facet_wrap(~lab, ncol = 2) +
   scale_x_continuous(breaks = seq(2009, 2021, 1)) +
-  theme(axis.text.x = element_text(
-    angle = 90, vjust = 0.5,
-    hjust = 1
-  ))
+  theme(
+    axis.text.x = element_text(
+      angle = 90, vjust = 0.5,
+      hjust = 1
+    ),
+    axis.text = element_text(color = "black"),
+    panel.border = element_rect(color = "black"),
+    axis.ticks = element_line(color = "black")
+  )
 
 ggsave("results/fig_6.pdf", width = 7.5, height = 6)
 
@@ -282,10 +287,15 @@ ggplot(
   theme_custom() +
   theme(legend.position = "bottom") +
   scale_x_continuous(breaks = seq(2009, 2021, 1)) +
-  theme(axis.text.x = element_text(
-    angle = 90, vjust = 0.5,
-    hjust = 1
-  ))
+  theme(
+    axis.text.x = element_text(
+      angle = 90, vjust = 0.5,
+      hjust = 1
+    ),
+    axis.text = element_text(color = "black"),
+    panel.border = element_rect(color = "black"),
+    axis.ticks = element_line(color = "black")
+  )
 
 ggsave("results/fig_G1.pdf", width = 7.5, height = 3.5)
 

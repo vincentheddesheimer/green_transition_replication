@@ -139,7 +139,7 @@ df_label_2021 <- df_plot_2021 %>%
 
 # Create scatter plot for 2013-2021
 ggplot(df_plot_2021, aes(brown0_3_share_2013 * 100, afd_diff * 100)) +
-    geom_point(aes(shape = east, fill = east, color = east), alpha = 0.7) +
+    geom_point(aes(shape = east, fill = east, color = east), alpha = 0.7, size = 2) +
     geom_smooth(method = "lm", se = FALSE, aes(color = east)) +
     ggrepel::geom_text_repel(
         data = df_label_2021,
@@ -157,11 +157,14 @@ ggplot(df_plot_2021, aes(brown0_3_share_2013 * 100, afd_diff * 100)) +
     theme(
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
-        text = element_text(size = 15)
+        text = element_text(size = 15),
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     ) +
     scale_shape_manual(values = c(21, 22), name = "") +
-    scale_color_brewer(name = "", type = "qual", palette = 1) +
-    scale_fill_brewer(name = "", type = "qual", palette = 1) +
+    scale_color_manual(name = "", values = c("West Germany" = "#0072B2", "East Germany" = "#E69F00")) +
+    scale_fill_manual(name = "", values = c("West Germany" = "#0072B2", "East Germany" = "#E69F00")) +
     theme(legend.position = "bottom")
 
 ggsave(
@@ -196,7 +199,7 @@ df_label_2017 <- df_plot_2017 %>%
 
 # Create scatter plot for 2013-2017
 ggplot(df_plot_2017, aes(brown0_3_share_2013 * 100, afd_diff * 100)) +
-    geom_point(aes(shape = east, fill = east, color = east), alpha = 0.7) +
+    geom_point(aes(shape = east, fill = east, color = east), alpha = 0.7, size = 2) +
     geom_smooth(method = "lm", se = FALSE, aes(color = east)) +
     ggrepel::geom_text_repel(
         data = df_label_2017,
@@ -217,8 +220,10 @@ ggplot(df_plot_2017, aes(brown0_3_share_2013 * 100, afd_diff * 100)) +
         text = element_text(size = 15)
     ) +
     scale_shape_manual(values = c(21, 22), name = "") +
-    scale_color_brewer(name = "", type = "qual", palette = 1) +
-    scale_fill_brewer(name = "", type = "qual", palette = 1) +
+    #scale_color_brewer(name = "", type = "qual", palette = 1) +
+    #scale_fill_brewer(name = "", type = "qual", palette = 1) +
+    scale_color_manual(name = "", values = c("West Germany" = "#0072B2", "East Germany" = "#E69F00")) +
+    scale_fill_manual(name = "", values = c("West Germany" = "#0072B2", "East Germany" = "#E69F00")) +
     theme(legend.position = "bottom")
 
 ggsave(
@@ -255,7 +260,7 @@ ggplot(brown_summary_time, aes(x = election_year, y = value, color = statistic, 
     geom_line() +
     geom_point(size = 2) +
     scale_x_continuous(breaks = unique(df$election_year)) +
-    scale_color_manual(values = c("Mean" = "black", "Median" = "grey50")) +
+    scale_color_manual(values = c("Mean" = "black", "Median" = "#999999")) +
     scale_linetype_manual(values = c("Mean" = "solid", "Median" = "solid")) +
     labs(
         x = "Election year",
@@ -268,7 +273,10 @@ ggplot(brown_summary_time, aes(x = election_year, y = value, color = statistic, 
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         text = element_text(size = 15),
-        legend.position = "bottom"
+        legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")
     )
 
 ggsave(

@@ -147,7 +147,7 @@ plot_df_final %>%
 plot_df_final %>%
     ggplot(aes(x = label, y = estimate, color = as.factor(spec))) +
     geom_hline(yintercept = 0, linetype = "dotted") +
-    geom_point(position = pd, aes(shape = spec, color = spec, fill = spec)) +
+    geom_point(position = pd, aes(shape = spec, color = spec, fill = spec), size = 2) +
     geom_errorbar(aes(ymin = conf.low, ymax = conf.high),
         width = 0.0,
         position = pd
@@ -159,7 +159,11 @@ plot_df_final %>%
         y = "Coefficient estimate (standard deviations)"
     ) +
     coord_flip() +
-    theme(legend.position = "bottom") +
+    theme(
+        legend.position = "bottom",
+        axis.text = element_text(color = "black"),
+        panel.border = element_rect(color = "black"),
+        axis.ticks = element_line(color = "black")) +
     scale_color_manual(
         values = c("black", "grey40", "grey60"),
         name = ""
